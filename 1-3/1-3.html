@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио-Резюме</title>
+    <!-- Подключение нестандартных шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+   
+    <!-- Подключение внешнего CSS-файла методом импортирования !-->
+    <link rel="stylesheet" href="C:\Users\Тимофей\Documents\ПССИП\1-3\Untitled-1.css">
+   <style>
+     
+
+        /* Оформление текста */
+        p {
+            color: #333;
+        }
+        .highlight {
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: line-through;
+        }
+
+        /* Стилизация гиперссылок */
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* Оформление изображений */
+        img {
+            border: 2px solid #ddd;
+            border-radius: 0; /* Квадратное изображение */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: border-radius 0.3s ease; /* Плавный переход */
+        }
+        img:hover {
+            border-radius: 50%; /* Делает изображение круглым */
+        }
+
+        /* Стилизация списков */
+        ul {
+            list-style-image: url('custom-icon.png'); /* Укажите свой графический маркер */
+        }
+
+        /* Стилизация таблиц */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Стилизация таблицы*/
+        table td:hover, table th:hover {
+        background-color: blue; /* Цвет фона при наведении */
+        color: white; /* Изменение цвета текста для контраста */
+        transition: background-color 0.3s ease; /* Плавный переход */
+        }
+
+        /* Стилизация кнопок
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #007BFF, #00D4FF);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #0056b3, #00aaff);
+        } */
+        @import url("C:\Users\Тимофей\Documents\ПССИП\1-3\Untitled-2.css");
+
+        /* Анимация */
+        .animated-box {
+            width: 100px;
+            height: 100px;
+            background-color: #007BFF;
+            margin: 20px auto;
+            animation: bounce 2s infinite;
+            cursor: pointer; /* Добавим указатель, чтобы было понятно, что элемент кликабельный */
+            transition: background-color 0.3s ease; /* Плавный переход цвета */
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Стили для полосы загрузки */
+    .progress-container {
+      width: 100%;
+      background-color: #f3f3f3;
+      height: 5px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: none; /* Изначально скрыта */
+    }
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background-color: blue;
+      transition: width 3s linear; /* Анимация заполнения за 3 секунды */
+    }
+
+    /* Пример базовых стилей для ссылки */
+    
+    </style>
+
+</head>
+
+<body>
+    <!-- Струкртура HTML-документа-->
+     <header>
+        <h1>Моё портфолио</h1>
+        <p>Автор: Яжевич</p>
+     </header>
+
+      <!-- Оформление текста -->
+    <section>
+        <h2>Оформление текста</h2>
+        <p>Это <b>жирный текст</b>, это <i>курсивный текст</i>, а это <u>подчеркнутый</u> текст. Вот <strike>зачеркнутый</strike> текст.</p>
+    </section>
+
+     <!-- Списки -->
+     <section>
+        <h2>Списки</h2>
+        <h3>ЯП с которыми работал</h3>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>C#</li>
+        </ul>
+        <h3>Хобби</h3>
+        <ol>
+            <li>Книги</li>
+            <li>Фильмы</li>
+            <li>Музыка</li>
+        </ol>
+    </section>
+
+     <!-- Изображения -->
+     <section>
+        <h2>Изображения</h2>
+        <img
+  src="images/1.jpg"
+  
+  width="300"
+  height="300"
+  title="Тимофей Яжевич" />
+    </section>
+
+    <!-- Аудио и видео -->
+    <section>
+        <h2>Аудио и Видео</h2>
+        <audio controls>
+            <source src="audio.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+        </audio>
+        <video controls width="320">
+            <source src="video.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+    </section>
+
+    <!-- Таблицы -->
+    <section>
+        <h2>Таблицы</h2>
+        <table border="2">
+            <tr>
+                <th>Технология</th>
+                <th>Уровень</th>
+            </tr>
+            <tr>
+                <td>HTML</td>
+                <td colspan="2">Продвинутый</td>
+            </tr>
+            <tr>
+                <td>CSS</td>
+                <td>Средний</td>
+            </tr>
+        </table>
+    </section>
+
+     <!-- Формы -->
+     <section>
+        <h2>Форма регистрации</h2>
+        <form action="#" method="POST">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name"><br>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
+            
+            <label for="address">Адрес проживания:</label>
+            <input type="text" id="address" name="address"><br>
+            
+            <label for="phone">Номер телефона:</label>
+            <input type="tel" id="phone" name="phone"><br>
+            
+            <label for="gender">Пол:</label>
+            <select id="gender" name="gender">
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+                <option value="other">Другой</option>
+            </select><br>
+            
+            <button type="submit">Отправить</button>
+        </form>
+    </section>
+
+    <!-- Гиперссылки -->
+    <section>
+        <h2>Гиперссылки</h2>
+        <a href="https://github.com/yourprofile">Мой GitHub</a><br>
+        <a href="#top">Вернуться наверх</a>
+    </section>
+
+     <!-- Спецсимволы -->
+     <section>
+        <h2>Спецсимволы</h2>
+        <p>&copy; 2025 Яжевич</p>
+    </section>
+
+    <!-- Анимация -->
+   
+    <div class="animated-box" onclick="changeColor(this)"></div>
+
+    <script>
+        function changeColor(element) {
+            // Генерация случайного цвета в формате HEX
+            const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+            element.style.backgroundColor = randomColor; // Применение нового цвета
+        }
+    </script>
+
+     <!-- Семантические теги -->
+     <footer>
+        <h2>Семантические теги</h2>
+        <p style = "display: block;">Контакты: example@example.com</p>
+        
+    </footer>
+
+    
+</body>
+</html>
