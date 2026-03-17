@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Расчет математических функций</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .formula-container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .formula-block {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f0f7ff;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        .input-group {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+        label {
+            width: 80px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        input {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            width: 150px;
+            margin-right: 10px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 30px auto;
+            width: 200px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            display: none;
+        }
+        .result-value {
+            font-size: 24px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .formula-display {
+            font-size: 18px;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .condition {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Расчет математических функций</h1>
+    
+    <div class="formula-container">
+        <h2>Формулы для расчета:</h2>
+        
+        <div class="formula-block">
+            <div class="formula-display">
+                \[ y = \frac{a}{x^2 - 25} + \sqrt{a + x} \]
+                <span class="condition">(при x ≥ 2)</span>
+            </div>
+        </div>
+        
+        <div class="formula-block">
+            <div class="formula-display">
+                \[ y = 2\sqrt{a} \times \frac{x}{4} \]
+                <span class="condition">(при 0 ≤ x < 2)</span>
+            </div>
+        </div>
+        
+        <div class="formula-block">
+            <div class="formula-display">
+                \[ y = 0,\!3x \]
+                <span class="condition">(при x < 0)</span>
+            </div>
+        </div>
+        
+        <div class="input-group">
+            <label for="aValue">Параметр a:</label>
+            <input type="number" id="aValue" step="any" placeholder="Введите a">
+        </div>
+        
+        <div class="input-group">
+            <label for="xValue">Параметр x:</label>
+            <input type="number" id="xValue" step="any" placeholder="Введите x">
+        </div>
+        
+        <button id="calculateBtn">Вычислить результат</button>
+    </div>
+    
+    <div id="result">
+        <h2>Результаты расчета:</h2>
+        <p>Для параметров: a = <span id="inputA"></span>, x = <span id="inputX"></span></p>
+        <p>Применена формула: <span id="usedFormula"></span></p>
+        <div class="result-value">
+            y = <span id="outputY"></span>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            try {
+                // Получаем значения из полей ввода
+                const a = parseFloat(document.getElementById('aValue').value);
+                const x = parseFloat(document.getElementById('xValue').value);
+                
+                // Проверка на ввод чисел
+                if (isNaN(a) || isNaN(x)) {
+                    throw new Error("Пожалуйста, введите корректные числовые значения для a и x");
+                }
+                
+                let y, formula;
+                
+                // Выбираем формулу в зависимости от значения x
+                if (x >= 2) {
+                    formula = "y = a/(x² - 25) + √(a + x)";
+                    // Проверка деления на ноль
+                    if (Math.pow(x, 2) - 25 === 0) {
+                        throw new Error("Ошибка: деление на ноль (x² - 25 = 0)");
+                    }
+                    // Проверка корня из отрицательного числа
+                    if (a + x < 0) {
+                        throw new Error("Ошибка: квадратный корень из отрицательного числа (a + x < 0)");
+                    }
+                    y = a / (Math.pow(x, 2) - 25) + Math.sqrt(a + x);
+                } 
+                else if (x >= 0 && x < 2) {
+                    formula = "y = 2√a × (x/4)";
+                    // Проверка корня из отрицательного числа
+                    if (a < 0) {
+                        throw new Error("Ошибка: квадратный корень из отрицательного числа (a < 0)");
+                    }
+                    y = 2 * Math.sqrt(a) * (x / 4);
+                } 
+                else if (x < 0) {
+                    formula = "y = 0.3x";
+                    y = 0.3 * x;
+                }
+                
+                // Отображаем результаты
+                document.getElementById('inputA').textContent = a;
+                document.getElementById('inputX').textContent = x;
+                document.getElementById('usedFormula').textContent = formula;
+                document.getElementById('outputY').textContent = y.toFixed(4);
+                document.getElementById('result').style.display = 'block';
+                
+            } catch (error) {
+                // Выводим ошибку в диалоговое окно
+                alert("Ошибка: " + error.message);
+                document.getElementById('result').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

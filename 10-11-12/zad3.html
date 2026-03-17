@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Работа с объектом Array</h2>
+    <button onclick="processArray()">Ввести массив и выполнить обработку</button>
+    <div id="result"></div>
+
+    <script>
+        function processArray() {
+            // 1. Получаем массив от пользователя
+            const input = prompt("Введите 6 целых чисел через запятую (например: 12, 5, 8, 23, 16, 9):");
+            
+            // Преобразуем введённую строку в массив чисел
+            let arr = input.split(',').map(item => parseInt(item.trim()));
+            
+            // Проверяем, что введено ровно 6 чисел
+            if (arr.length !== 6 || arr.some(isNaN)) {
+                alert("Пожалуйста, введите ровно 6 целых чисел через запятую!");
+                return;
+            }
+            
+            const originalArr = [...arr]; // Сохраняем копию исходного массива
+            
+            // 2. Находим сумму четных элементов
+            let sumEven = 0;
+            for (let num of arr) {
+                if (num % 2 === 0) {
+                    sumEven += num;
+                }
+            }
+            
+            // 3. Находим максимальный элемент и его индекс
+            let maxIndex = 0;
+            let maxValue = arr[0];
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] > maxValue) {
+                    maxValue = arr[i];
+                    maxIndex = i;
+                }
+            }
+            
+            // 4. Меняем местами последний и максимальный элементы
+            const lastIndex = arr.length - 1;
+            [arr[maxIndex], arr[lastIndex]] = [arr[lastIndex], arr[maxIndex]];
+            
+            // 5. Выводим результаты
+            document.getElementById('result').innerHTML = `
+                <p><strong>Исходный массив:</strong> [${originalArr.join(', ')}]</p>
+                <p><strong>Сумма четных элементов:</strong> ${sumEven}</p>
+                <p><strong>Максимальный элемент:</strong> ${maxValue}</p>
+                <p><strong>Измененный массив:</strong> [${arr.join(', ')}] (последний и максимальный элементы поменялись местами)</p>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Работа со строками</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .string-display {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Работа со строками</h2>
+    
+    <div>
+        <p><strong>Исходные строки:</strong></p>
+        <div class="string-display" id="s1Display">S1: Я люблю Беларусь</div>
+        <div class="string-display" id="s2Display">S2: Я учусь в Политехническом колледже</div>
+    </div>
+    
+    <div>
+        <p><strong>Длина S1:</strong> <span id="lengthDisplay"></span></p>
+    </div>
+    
+    <button onclick="removeSubstring()">Удалить "учусь" из S2</button>
+    <button onclick="replaceLetters()">Заменить "ю" на "*" в S1</button>
+
+    <script>
+        // Исходные строки (используем let вместо const для изменения)
+        let S1 = "Я люблю Беларусь";
+        let S2 = "Я учусь в Политехническом колледже";
+        
+        // Отображаем длину S1 при загрузке
+        document.getElementById('lengthDisplay').textContent = S1.length;
+        
+        // Функция для удаления подстроки
+        function removeSubstring() {
+            S2 = S2.replace("учусь", "");
+            document.getElementById('s2Display').textContent = `S2: ${S2}`;
+        }
+        
+        // Функция для замены букв
+        function replaceLetters() {
+            S1 = S1.replace(/ю/g, "*");
+            document.getElementById('s1Display').textContent = `S1: ${S1}`;
+        }
+    </script>
+</body>
+</html>

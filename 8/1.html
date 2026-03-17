@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адрес доставки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .auth-notice {
+            background-color: #ffffff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .auth-box {
+            background-color: #ddd;
+            text-align: left;
+            height: 50px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .login-btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 75px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        
+        input::placeholder {
+            color: #999;
+        }
+        
+        .house-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .house-group .form-group {
+            flex: 1;
+        }
+        
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Адрес доставки</h1>
+    
+    <div class="auth-notice">
+        Чтобы мы могли показать Вам актуальный перечень товаров,<br>
+        нам необходимо знать адрес, по которому Вы хотели бы<br>
+        получить заказ.<br><br>
+        <div class="auth-box">
+            Вы не авторизованы, войдите в<br>
+            личный кабинет
+            <a href="#" class="login-btn">Войти</a>
+        </div>
+    </div>
+    
+    <form>
+        <div class="form-group">
+            <input type="text" id="city" name="city" placeholder="Населенный пункт" required>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" id="street" name="street" placeholder="Улица" required>
+        </div>
+        
+        <div class="house-group">
+            <div class="form-group">
+                <input type="text" id="house" name="house" placeholder="Дом" required>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" id="building" name="building" placeholder="Корпус">
+            </div>
+        </div>
+        
+        <button type="submit" class="save-btn">Сохранить адрес доставки</button>
+    </form>
+</body>
+</html>

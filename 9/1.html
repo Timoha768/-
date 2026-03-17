@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полный курс JavaScript - Все задачи</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Полный курс JavaScript - Все задачи</h1>
+
+    <!-- Раздел 1: Способы внедрения JS -->
+    <section id="section1">
+        <h2>1. Способы внедрения JavaScript в HTML</h2>
+        
+        <h3>1.1. Встроенный скрипт (inline)</h3>
+        <button onclick="alert('Это встроенный JavaScript!')">Нажмите для inline JS</button>
+        
+        <h3>1.2. Внутренний скрипт</h3>
+        <button id="internalScriptBtn">Нажмите для внутреннего JS</button>
+        
+        <h3>1.3. Внешний скрипт</h3>
+        <button id="externalScriptBtn">Нажмите для внешнего JS</button>
+        
+        <h3>1.4. Динамическая загрузка скрипта</h3>
+        <button id="dynamicLoadBtn">Загрузить скрипт динамически</button>
+    </section>
+
+    <!-- Раздел 2: Операторы JS -->
+    <section id="section2">
+        <h2>2. Операторы JavaScript</h2>
+        
+        <h3>2.1. Условные операторы (if/else)</h3>
+        <button id="ifElseBtn">Проверить возраст</button>
+        <p id="ifElseResult"></p>
+        
+        <h3>2.2. Оператор switch</h3>
+        <button id="switchBtn">День недели</button>
+        <p id="switchResult"></p>
+        
+        <h3>2.3. Циклы</h3>
+        <div>
+            <button id="forLoopBtn">Цикл for</button>
+            <button id="whileLoopBtn">Цикл while</button>
+            <button id="doWhileLoopBtn">Цикл do...while</button>
+        </div>
+        <p id="loopsResult"></p>
+        
+        <h3>2.4. break/continue</h3>
+        <button id="breakContinueBtn">Демонстрация break/continue</button>
+        <p id="breakContinueResult"></p>
+        
+        <h3>2.5. Оператор return</h3>
+        <button id="returnBtn">Вычислить сумму</button>
+        <p id="returnResult"></p>
+    </section>
+
+    <!-- Раздел 3: Диалоговые окна -->
+    <section id="section3">
+        <h2>3. Диалоговые окна</h2>
+        
+        <h3>3.1. alert()</h3>
+        <button id="alertBtn">Показать alert</button>
+        
+        <h3>3.2. confirm()</h3>
+        <button id="confirmBtn">Показать confirm</button>
+        <p id="confirmResult"></p>
+        
+        <h3>3.3. prompt()</h3>
+        <button id="promptBtn">Показать prompt</button>
+        <p id="promptResult"></p>
+    </section>
+
+    <!-- Внутренний JavaScript -->
+    <script>
+        // 1.2. Внутренний скрипт
+        document.getElementById('internalScriptBtn').addEventListener('click', function() {
+            alert('Это внутренний JavaScript!');
+        });
+
+        // 2. Операторы JavaScript
+        // 2.1. if/else
+        document.getElementById('ifElseBtn').addEventListener('click', function() {
+            const age = prompt('Введите ваш возраст:');
+            let message;
+            
+            if (age < 13) {
+                message = "Вы ребенок";
+            } else if (age < 18) {
+                message = "Вы подросток";
+            } else {
+                message = "Вы взрослый";
+            }
+            
+            document.getElementById('ifElseResult').textContent = message;
+        });
+
+        // 2.2. switch
+        document.getElementById('switchBtn').addEventListener('click', function() {
+            const day = new Date().getDay();
+            let dayName;
+            
+            switch(day) {
+                case 0: dayName = "Воскресенье"; break;
+                case 1: dayName = "Понедельник"; break;
+                case 2: dayName = "Вторник"; break;
+                case 3: dayName = "Среда"; break;
+                case 4: dayName = "Четверг"; break;
+                case 5: dayName = "Пятница"; break;
+                case 6: dayName = "Суббота"; break;
+                default: dayName = "Неизвестный день";
+            }
+            
+            document.getElementById('switchResult').textContent = `Сегодня ${dayName}`;
+        });
+
+        // 2.3. Циклы
+        document.getElementById('forLoopBtn').addEventListener('click', function() {
+            let result = "Цикл for: ";
+            for (let i = 0; i < 5; i++) {
+                result += i + " ";
+            }
+            document.getElementById('loopsResult').textContent = result;
+        });
+
+        document.getElementById('whileLoopBtn').addEventListener('click', function() {
+            let result = "Цикл while: ";
+            let i = 0;
+            while (i < 5) {
+                result += i + " ";
+                i++;
+            }
+            document.getElementById('loopsResult').textContent = result;
+        });
+
+        document.getElementById('doWhileLoopBtn').addEventListener('click', function() {
+            let result = "Цикл do...while: ";
+            let i = 0;
+            do {
+                result += i + " ";
+                i++;
+            } while (i < 5);
+            document.getElementById('loopsResult').textContent = result;
+        });
+
+        // 2.4. break/continue
+        document.getElementById('breakContinueBtn').addEventListener('click', function() {
+            let result = "break/continue: ";
+            for (let i = 0; i < 10; i++) {
+                if (i === 3) continue;
+                if (i === 7) break;
+                result += i + " ";
+            }
+            document.getElementById('breakContinueResult').textContent = result;
+        });
+
+        // 2.5. return
+        function sum(a, b) {
+            return a + b;
+        }
+        document.getElementById('returnBtn').addEventListener('click', function() {
+            const result = sum(5, 3);
+            document.getElementById('returnResult').textContent = `Сумма 5 + 3 = ${result}`;
+        });
+
+        // 3. Диалоговые окна
+        // 3.1. alert
+        document.getElementById('alertBtn').addEventListener('click', function() {
+            alert('Это сообщение от alert()');
+        });
+
+        // 3.2. confirm
+        document.getElementById('confirmBtn').addEventListener('click', function() {
+            const isConfirmed = confirm('Вы уверены?');
+            document.getElementById('confirmResult').textContent = 
+                `Вы выбрали: ${isConfirmed ? 'Да' : 'Нет'}`;
+        });
+
+        // 3.3. prompt
+        document.getElementById('promptBtn').addEventListener('click', function() {
+            const name = prompt('Введите ваше имя:', 'Гость');
+            document.getElementById('promptResult').textContent = 
+                `Привет, ${name || 'Гость'}!`;
+        });
+
+        // 1.4. Динамическая загрузка скрипта
+        document.getElementById('dynamicLoadBtn').addEventListener('click', function() {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/gh/dummy-external-script.js';
+            script.onload = function() {
+                alert('Внешний скрипт загружен!');
+            };
+            document.body.appendChild(script);
+        });
+    </script>
+
+    <!-- Внешний JavaScript (1.3) -->
+    <script src="external.js"></script>
+</body>
+</html>
